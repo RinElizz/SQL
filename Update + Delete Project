@@ -1,0 +1,29 @@
+/* What does the app's SQL look like? */
+
+CREATE table Flo (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    Phase TEXT,
+    Cramp_Pain NUMERIC ); 
+    
+INSERT INTO Flo (name, phase , cramp_Pain)
+    VALUES ("Erin", "Follicular", 5);
+INSERT INTO Flo (name, phase , cramp_Pain)
+    VALUES ("Suz", "Menstrual",10);
+INSERT INTO Flo (name, phase , cramp_Pain)
+    VALUES ("Krystelle", "Follicular", 3);
+INSERT INTO Flo (name, phase , cramp_Pain)
+    VALUES ("Kassy", "Ovulation", 5);
+INSERT INTO Flo (name, phase , cramp_Pain)
+    VALUES ("Emily", "Menstrual", 9); 
+    
+SELECT * FROM Flo;
+
+UPDATE Flo 
+SET name = "Patient Name"
+WHERE name = "Patient Name";
+SELECT  * FROM Flo;
+
+DELETE FROM Flo 
+WHERE Phase = "Follicular";
+SELECT * FROM Flo; 
