@@ -1,0 +1,48 @@
+CREATE TABLE Grocery 
+(id INTEGER PRIMARY KEY, item TEXT, category TEXT, price INTEGER, quantity INTEGER);
+
+INSERT INTO Grocery 
+VALUES (1, "Yogurt", "dairy", 6.99, 1);
+INSERT INTO Grocery
+VALUES (2, "mixed berries", "produce", 5.99, 3);
+INSERT INTO Grocery
+VALUES (3, "granola", "cereal", 2.99, 1);
+INSERT INTO Grocery
+VALUES (4, "pumpkin seeds", "bulk", 2.99, 2);
+INSERT INTO Grocery
+VALUES (5, "mushrooms", "produce", 4.99, 3);
+INSERT INTO Grocery
+VALUES (6, "sunflower seeds", "bulk", 3.25, 5);
+INSERT INTO Grocery
+VALUES (7, "hummus", "produce", 2.99, 1);
+INSERT INTO Grocery
+VALUES (8, "cucumber", "produce", 1.99, 3);
+INSERT INTO Grocery
+VALUES (9, "coconut milk", "dairy", 4.99, 2);
+INSERT INTO Grocery
+VALUES (10, "ginger", "produce", 3.99, 2);
+INSERT INTO Grocery
+VALUES (11, "cinnamon", "spice", 2.99, 1);
+INSERT INTO Grocery
+VALUES (12, "bananas", "produce", 1.99, 5);
+INSERT INTO Grocery
+VALUES (13, "garlic", "produce", 2.89, 3);
+INSERT INTO Grocery
+VALUES (14, "brazil nuts", "grains", 9.99, 1);
+INSERT INTO Grocery
+VALUES (15, "key limes", "produce", 5.99, 1);
+
+/* display the quantity ordered low to high. */
+SELECT * FROM Grocery
+ORDER BY quantity; 
+
+/* what is the avg price of items in the produce category? */
+SELECT AVG(price) "avg item price"
+FROM Grocery
+WHERE category = 'produce'; 
+
+/* what are the most popular items limited to 5? */
+SELECT item, price, quantity
+FROM Grocery
+ORDER BY quantity 
+desc limit 5; 
