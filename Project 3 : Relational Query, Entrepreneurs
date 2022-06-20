@@ -1,29 +1,42 @@
-/* Create table about the people and what they do here */
+In this project, you’re going to make your own table with some small set of “famous people”, then make more tables about things they do and join those to create nice human readable lists.
 
+For example, here are types of famous people and the questions your data could answer:
+
+Movie stars: What movies are they in? Are they married to each other?
+Singers: What songs did they write? Where are they from?
+Authors: What books did they write?
+Fictional characters: How are they related to other characters? What books do they show up in?
+
+
+/* Create table about the people and what they do here */
 CREATE TABLE Entrepreneurs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     niche TEXT);
     
-INSERT INTO Entrepreneurs  (name, niche) VALUES ("Mike Zeller", "Human Potential");
+INSERT INTO Entrepreneurs  (name, niche) 
+VALUES ("Mike Zeller", "Human Potential");
 
-INSERT INTO Entrepreneurs  (name, niche) VALUES ("Aaron Kovac", "Chiro-Estethics");
+INSERT INTO Entrepreneurs  (name, niche) 
+VALUES ("Aaron Kovac", "Chiro-Estethics");
 
-INSERT INTO Entrepreneurs  (name, niche) VALUES 
-("Krystelle Lorainne", "meditations");
+INSERT INTO Entrepreneurs  (name, niche) 
+VALUES ("Krystelle Lorainne", "meditations");
 
-INSERT INTO Entrepreneurs  (name, niche) VALUES ("Rachel Pastor", "NLP Healer");
+INSERT INTO Entrepreneurs  (name, niche) 
+VALUES ("Rachel Pastor", "NLP Healer");
 
-INSERT INTO Entrepreneurs  (name, niche) VALUES ("Tamra Andress", "Christian Coach"); 
+INSERT INTO Entrepreneurs  (name, niche) 
+VALUES ("Tamra Andress", "Christian Coach"); 
 
-INSERT INTO Entrepreneurs  (name, niche) VALUES
-("Marianne" , "Reiki Master");
+INSERT INTO Entrepreneurs  (name, niche) 
+VALUES ("Marianne" , "Reiki Master");
 
-INSERT INTO Entrepreneurs  (name, niche) VALUES
-("Angus Nelson", "Masculine Energy");
+INSERT INTO Entrepreneurs  (name, niche) 
+VALUES ("Angus Nelson", "Masculine Energy");
 
-INSERT INTO Entrepreneurs  (name, niche) VALUES
-("Suz" , "Business Growth");
+INSERT INTO Entrepreneurs  (name, niche) 
+VALUES ("Suz" , "Business Growth");
 
 CREATE table business_model (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -54,11 +67,13 @@ VALUES ("Angus Nelson" , "1on1 Coaching");
 INSERT INTO business_model (name, model) 
 VALUES ("Suz" , "Group Coaching");
 
+/* Joining related tables with left outer joins */
 SELECT Entrepreneurs.name AS "Entrepreneur Name", business_model.model AS "Business Model"
 FROM Entrepreneurs
 JOIN business_model
     ON entrepreneurs.name = business_model.name;
     
+/* Joining tables to themselves with self-joins */    
 SELECT Entrepreneurs.niche AS "Niche", business_model.model AS "Business Model", business_model.name AS "NAME"
 FROM Entrepreneurs
 JOIN business_model
