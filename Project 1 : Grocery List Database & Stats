@@ -1,3 +1,9 @@
+-- Create a store database
+
+Create your own store! Your store should sell one type of things, like clothing or bikes, whatever you want your store to specialize in. 
+You should have a table for all the items in your store, and at least 5 columns for the kind of data you think you'd need to store. 
+You should sell at least 15 items, and use select statements to order your items by price and show at least one statistic about the items.
+
 CREATE TABLE Grocery 
 (id INTEGER PRIMARY KEY, item TEXT, category TEXT, price INTEGER, quantity INTEGER);
 
@@ -32,7 +38,7 @@ VALUES (14, "brazil nuts", "grains", 9.99, 1);
 INSERT INTO Grocery
 VALUES (15, "key limes", "produce", 5.99, 1);
 
-/* display the quantity ordered low to high. */
+/* display the database ordered by quantity (low to high) */
 SELECT * FROM Grocery
 ORDER BY quantity; 
 
