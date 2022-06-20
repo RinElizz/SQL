@@ -1,3 +1,16 @@
+We’ve curated a set of interesting data sets for you: NASA astronauts, Superbowl results, Pokemon stats, NBA players, Top movies, Top countries by population,
+Solar system objects by size, Marvel characters, Furniture store sales, Earned KA badges, Winston's donut logs, Card game results, and NFL draft picks.
+
+Pick one of those data sets or create a data set like that, and use advanced SELECT queries to discover things about the data. 
+What sort of questions might one have about that data, like if they were using it for an app or a business idea? 
+
+Here are some ideas:
+
+What are average, max, and min values in the data?
+What about those numbers per category in the data (using HAVING)?
+What ways are there to group the data values that don’t exist yet (using CASE)?
+What interesting ways are there to filter the data (using AND/OR)?
+
 CREATE TABLE sales(
   ID INTEGER  NOT NULL PRIMARY KEY, transaction_date TEXT, product TEXT, price INTEGER, payment_type TEXT, name TEXT, city TEXT, state TEXT, country TEXT, account_created TEXT, last_login TEXT, latitude REAL, longitude REAL);
 
@@ -36,18 +49,20 @@ INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,co
 INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/8/09 1:59','Chair',1200,'Mastercard','SYLVIA','Vesenaz','Geneve','Switzerland','11/28/07 11:56','1/8/09 7:20',46.2333333,6.2);
 INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/3/09 9:03','Chair',1200,'Diners','Sheila','Brooklyn','NY','United states','1/3/09 8:47','1/8/09 10:38',40.65,-73.95);
 
+/* Display all of the records in this table. */
 SELECT * FROM "sales"; 
 
-/* Data aggregated displays the average, minimum and maximun from sales*/ 
-
+/* What is the Average price of data from sales? */ 
 SELECT AVG(price) FROM "sales";
+
+/* What is the minimum price of data from sales? */ 
 SELECT MIN(price) FROM "sales";
+
+/* What is the Maximum price of data from sales? */ 
 SELECT MAX(price) FROM "sales";
 
-/* What products were purchased during the month that were < 4300? */ 
-
+/* What products were purchased during the month that were < 4300 dollars? */ 
 SELECT product, SUM(price) FROM sales GROUP BY product;
-
 SELECT product, transaction_date, SUM(price) FROM sales
     GROUP BY product, transaction_date
     HAVING price < 4300;
@@ -56,11 +71,8 @@ SELECT product,transaction_date, SUM(price) FROM sales
     GROUP BY transaction_date
     HAVING price > 3300;
     
-/* Aggregated the data using CASE COMMAND to show when the price is >2500 then it is within target. All other products would be a low ticket item*/ 
-
+/* Which transactions where within target price and which items were below target price? */
 SELECT COUNT(*) FROM "sales" WHERE price > 7000;
-
-/* CASE */
 SELECT product, price,
    CASE 
     WHEN price > 2500 THEN "within target"
@@ -68,8 +80,11 @@ SELECT product, price,
     END as "to be sold"
 FROM sales;
 
-/* Aggregated the data to display sales from the US, sales from the US with pirces > 1200, and Sales from overseas where Visa or AMEX were the payment type */
-
+/* Which sales were processed in the Country United States. */
 SELECT * FROM sales WHERE Country <= "United States" ORDER BY Country;
+
+/* Which sales were processed in the United States where price < 1200 dollars? */
 SELECT * FROM sales WHERE Country >= "United States" AND price < 1200;
+
+/* Which sales were processed where payment type was Visa or Amex? */
 SELECT * FROM sales WHERE payment_type = "Visa" OR payment_type = "Amex";
